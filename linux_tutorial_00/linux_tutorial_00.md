@@ -1,6 +1,6 @@
 # Queen Deborah's guide on how to do GNU/Linux things good and do other things good too
 
-## Issue 1: How to make ASCII art good and learn terminal colors good too
+## Issue 1: How to make ASCII art good and create aliases good too
 
 ### ![](concerned_mirelia.jpg) By Queen Deborah Chrysoprase
 
@@ -16,7 +16,7 @@ Clearly, we need something here a little gayer, and while `zsh: command not foun
 
 ![GAAAAAAAAAAAY](lesbian_pride.jpg)
 
-The first thing we need to do is convert that JPEG image into ASCII text, for which there are endless tools use to accomplish that goal.  Since this is a GNU/Linux tutorial, we're going to be using a command line utility to make this change.  Install [ascii-image-converter](https://github.com/TheZoraiz/ascii-image-converter) to your machine based on your specific distribution's package manager (if you have one of those fancy things) or from source if you're feeling lucky.  Refer to either the FAQ in that linked git repo or your distro's documentation on how to do that, because we will learn how to do that instead in a future issue!  For now, we'll assume you know how to install that.  According to the `--help` menu in `ascii-image-converter`, we use `-C` flag to output colour, which gives us the following:
+The first thing we need to do is convert that JPEG image into ASCII text, for which there are endless tools to use to accomplish that goal.  Since this is a GNU/Linux tutorial, we're going to be using a command line utility to make this change.  Install [ascii-image-converter](https://github.com/TheZoraiz/ascii-image-converter) to your machine based on your specific distribution's package manager (if you have one of those fancy things) or from source if you're feeling lucky.  Refer to either the FAQ in that linked git repo or your distro's documentation on how to do that, because we will learn how to do that instead in a future issue!  For now, we'll assume you know how to install that.  According to the `--help` menu in `ascii-image-converter`, we use `-C` flag to output colour, which gives us the following:
 
 ![](linux_tutorial_02.png)
 
@@ -49,8 +49,10 @@ So how do we create our own?  This is actually very simple!  Each of these outpu
 
 Note the quotation marks here!  If the substitution has spaces or special characters, it MUST be wrapped in either single or double quotes, single quotes are required with special characters, double quotes are sufficient for just spaces.  
 
-Now, for our example, there's one thing we need to keep in mind - we may not always be in the same directory when we misspess `less` so we need to have an absolute path to our image, and not a relative path that we've been using.  So, when all is said and done, all we should need to do to set up our alias is the following:
+Now, for our example, there's one thing we need to keep in mind - we may not always be in the same directory when we misspell `less` so we need to have an absolute path to our image, and not a relative path that we've been using.  So, when all is said and done, all we should need to do to set up our alias is the following:
 
 `alias les='ascii-image-converter -C /home/deborah/Pictures/lesbian_pride.jpg'`
 
 ![](alias_in_action.png)
+
+Congratulations!! You've now successfully created an alias to do something fun when you misspell a command in your terminal!  Note, that this will only last as long as you keep that terminal open, since we're running out of time I'll leave it as an exercise to the reader to figure out how to make this permanent (hint:  Check the `.bashrc` file in your home folder!).  Next issue, we'll make this flag look a little bit better, and explore another way to link this permanently! 
