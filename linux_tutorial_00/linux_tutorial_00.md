@@ -2,11 +2,13 @@
 
 ## Issue 1: How to make ASCII art good and learn terminal colors good too
 
-I've been using GNU/Linux for a long time now and I've always thought there was a GLARING missing feature that to this day I'm still baffled that it's not a default feature.  You see, normally when you want to read a text file but you want more features than `more`, but mot as much bloat as `vim` you use `less` to open up that file and scroll through it, without printing the entire thing to the terminal like would happen with `cat`:
+### ![](concerned_mirelia.jpg) By Queen Deborah Chrysoprase
+
+I've been using GNU/Linux for a long time now and I've always thought there was a GLARING missing feature that to this day I'm still baffled that it's not a default feature.  You see, normally when you want to read a text file but you want more features than `more`, but not as much bloat as `vim`, you use `less` to open up that file and scroll through it, without printing the entire thing to the terminal like would happen with `cat`:
 
 ![Notice how less doesn't shit up your terminal while cat leaves it there](linux_tutorial_00.png)
 
-`less` is probably the command I use more than any other in my work, and probably on personal time too.  If you use `cat` or a text editor to open files in read only mode, try `less` instead! It has better scrolling features than `more` and doesn't take up as many resources as a text editor (because it is 2022 and we still worry about that). However, the glaring issue that I alluded to earlier, is that because this is the command I use most often, it's also the one I MISSPELL the most often as well, and it usually looks something like this:
+`less` is probably the command I use more often than any other in my work.  If you use `cat` or a text editor to open files in read only mode, try `less` instead! It has better scrolling features than `more` and doesn't take up as many resources as a text editor (because it is 2022 and we still worry about that). However, the glaring issue that I alluded to earlier, is that because this is the command I use most often, it's also the one I MISSPELL the most often as well, and it usually looks something like this:
 
 ![There really should be something here instead...](linux_tutorial_01.png)
 
@@ -18,7 +20,7 @@ The first thing we need to do is convert that JPEG image into ASCII text, for wh
 
 ![](linux_tutorial_02.png)
 
-This looks okay, and can definitely work in a pinch if we wanted, but I think the rows with `#` characters look more solid, so I would like to have EVERY line look solid.  Let's save the output of this to a file so we can inspect how those colors show up.  `ascii-image-converter -C lesbian_pride.jpg > lesbian_pride.out` should save the file to `lesbian_prid.out`, which we can open in vim:
+This looks okay, and can definitely work in a pinch if we wanted, but I think the rows with `#` characters look more solid, so I would like to have EVERY line look solid.  Let's save the output of this to a file so we can inspect how those colors show up.  `ascii-image-converter -C lesbian_pride.jpg > lesbian_pride.out` should save the file to `lesbian_pride.out`, which we can open in vim:
 
 ![](linux_tutorial_03.png)
 
@@ -33,7 +35,7 @@ So, we just need to repeat that all the way to the end of the screen. But how do
 
 ![](linux_tutorial_05.png)
 
-I had just mentioned that you cannot use this in a script because there is no actual terminal in the subshell running the script.  It would be to boring to explain the details of how this works in this article, but know you can use `COLUMNS=$(tput cols)` to get around this.  So, now that we know this, lets create a `for` loop that prints a single coloured `#` for each column on the screen:
+I had just mentioned that you cannot use this in a script because there is no actual terminal in the subshell running the script.  It would be too boring to explain the details of how this works in this article, but know you can use `COLUMNS=$(tput cols)` to get around this.  So, now that we know this, lets create a `for` loop that prints a single coloured `#` for each column on the screen:
 
 ```
 COLUMNS=$(tput cols)
@@ -80,12 +82,14 @@ done
 
 ![](linux_tutorial_08.png)
 
-And it works! We have procedurally generated a lesbian pride flag that matches the exact width of the terminal that called it!  All we need to do now is save it to a file called `les`, give it execute permissions with `chmod +x les`, and put that file in /usr/local/bin, or any foler in your $PATH.  You can see all the folders in your $PATH just by echoing it to the terminal:
+And it works! We have procedurally generated a lesbian pride flag that matches the exact width of the terminal that called it!  All we need to do now is save it to a file called `les`, give it execute permissions with `chmod +x les`, and put that file in /usr/local/bin, or any folder in your $PATH.  You can see all the folders in your $PATH just by echoing it to the terminal:
 
 
 ![](linux_tutorial_09.png)
 
-Your shell will look for command you type starting with the folder furthest to the left, and if it does not find a file matching the command you entered, it will move on to the next folder to the right of the `:`.  If it looks through each of these folders without finding your command, it will error and tell you that it cannot find what you're looking for.  You can verify a command is in your path without running it with the `which` command. Once you've done that, congratulations!  You're finished!  You can test out your VERY USEFUL lesbian pride command that outputs every time you misspell `les`
+Your shell will look for the command you typed starting with the folder furthest to the left, and if it does not find a file matching the command you entered, it will move on to the next folder to the right of the `:`.  If it looks through each of these folders without finding your command, it will error something like `command not found`.  You can verify a command is in your path without running it with the `which` command. Once you've done that, congratulations!  You're finished!  You can test out your VERY USEFUL lesbian pride command that outputs every time you misspell `less`
 
 
 ![](linux_tutorial_10.png)
+
+Now that we have that EXTREMELY important feature added to our systems, perhaps we can move on to less useful, but still important things, like how that `for` loop worked, or how to check out manual pages for the commands you don't know as well, or perhaps even some extremely useless systemd tutorials! Let me know what you want me to cover in the next issue! :D
